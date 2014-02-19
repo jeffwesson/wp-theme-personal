@@ -25,36 +25,42 @@
                              alt="Jeff Wesson at a park">
                     </div>
                     <div class="clearfix"></div>
-                    <h3 class="text-muted pull-right">Tags</h3>
+                    <?php
+                    $tags = wp_get_post_tags(get_the_ID());
+                    if (count($tags) >= 1): ?>
+                        <h3 class="text-muted pull-right">Tags</h3>
 
-                    <div class="clearfix"></div>
-                    <!-- List of tags -->
-                    <ul class="list-unstyled text-right">
-                        <?php
-                        $tags = wp_get_post_tags(get_the_ID());
-                        foreach ($tags as $tag) {
-                            $tag_link = get_tag_link($tag->term_id);
-                            $tag_html = "<li><a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
-                            $tag_html .= "{$tag->name}</a></li>";
-                            echo $tag_html;
-                        }
-                        ?>
-                    </ul>
-                    <h3 class="text-muted pull-right">Categories</h3>
+                        <div class="clearfix"></div>
+                        <!-- List of tags -->
+                        <ul class="list-unstyled text-right">
+                            <?php
+                            foreach ($tags as $tag) {
+                                $tag_link = get_tag_link($tag->term_id);
+                                $tag_html = "<li><a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
+                                $tag_html .= "{$tag->name}</a></li>";
+                                echo $tag_html;
+                            }
+                            ?>
+                        </ul>
+                    <?php endif; ?>
+                    <?php
+                    $categories = wp_get_object_terms(get_the_ID(), 'category');
+                    if (count($categories) >= 1): ?>
+                        <h3 class="text-muted pull-right">Categories</h3>
 
-                    <div class="clearfix"></div>
-                    <!-- List of categories -->
-                    <ul class="list-unstyled text-right">
-                        <?php
-                        $categories = wp_get_object_terms(get_the_ID(), 'category');
-                        foreach ($categories as $category) {
-                            $category_link = get_category_link($category->term_id);
-                            $category_html = "<li><a href='{$category_link}' title='{$category->name} Tag' class='{$category->slug}'>";
-                            $category_html .= "{$category->name}</a></li>";
-                            echo $category_html;
-                        }
-                        ?>
-                    </ul>
+                        <div class="clearfix"></div>
+                        <!-- List of categories -->
+                        <ul class="list-unstyled text-right">
+                            <?php
+                            foreach ($categories as $category) {
+                                $category_link = get_category_link($category->term_id);
+                                $category_html = "<li><a href='{$category_link}' title='{$category->name} Tag' class='{$category->slug}'>";
+                                $category_html .= "{$category->name}</a></li>";
+                                echo $category_html;
+                            }
+                            ?>
+                        </ul>
+                    <?php endif; ?>
                 </aside>
                 <section role="main content" class="col-sm-10">
                     <hgroup class="blog-title row">
@@ -73,6 +79,14 @@
                     </div>
 
                 </section>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 text-right">
+                    <h4 class="lead"><?php previous_post_link('%link', '&larr; %title', FALSE); ?></h4>
+                </div>
+                <div class="col-xs-6">
+                    <h4 class="lead"><?php next_post_link('%link', '%title &rarr;', FALSE); ?></h4>
+                </div>
             </div>
         <?php endwhile; endif; ?>
     </section>
