@@ -1,0 +1,227 @@
+/*
+Theme Name: twbs-wp
+Theme URI: http://jeffwesson.com
+Author: Jeff Wesson
+Author URI: http://jeffwesson.com/
+Description: A simple blog theme utilizing Twitter Bootstrap 3.1.0.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: orange, white, blue, gray, light, responsive-layout, accessibility-ready, custom-header, custom-menu
+Text Domain: twbs-wp
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+@import url('bootstrap/css/bootstrap.min.css');
+
+$fa-font-path: "font-awesome/fonts";
+@import "font-awesome/scss/font-awesome";
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+header,
+footer,
+.tags-xs {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom header */
+header {
+  margin-bottom: 10px;
+  hgroup {
+    border-bottom: 1px solid #e5e5e5;
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 200;
+      line-height: 1.4;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    h1, h2 {
+      font-size: 32px;
+    }
+    h1 {
+      color: lighten(orange, 25%);
+    }
+    h2 {
+      color: orange;
+    }
+  }
+}
+
+/* Mobile-only bottom margin on search input field for button separation */
+#s {
+  margin-bottom: 4px !important;
+}
+
+/* Custom navbar resembling nav-pill color scheme */
+.navbar-default {
+  background-color: transparent;
+  border: none;
+  .navbar-brand {
+    color: #428bca;
+    height: 50px;
+    &:hover {
+      background-color: #e5e5e5;
+      color: #428bca;
+      border-radius: 4px;
+    }
+  }
+  .navbar-header {
+    a {
+      font-family: monospace, serif;
+    }
+  }
+  .navbar-nav > .current-menu-item > a,
+  .navbar-header > a.current-menu-item {
+    background-color: #428bca;
+    color: #ffffff;
+    border-radius: 4px;
+    &:hover {
+      background-color: #2a6496;
+      color: #ffffff;
+    }
+  }
+  .navbar-nav > li > a {
+    color: #428bca;
+    border-radius: 4px;
+    &:hover {
+      background-color: #e5e5e5;
+      color: #428bca;
+    }
+  }
+  .navbar-collapse {
+    border-color: white;
+  }
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.nav-list li a {
+  border-radius: 4px;
+}
+
+/* Hiding aside on mobile displays */
+.no-mobile {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.visible-xs {
+  .text-muted {
+    font-weight: 200;
+    font-size: 18px;
+    border-bottom: 1px solid #e5e5e5;
+    display: inline-block;
+    &:first-of-type {
+      margin-top: 10px;
+    }
+  }
+}
+
+.text-muted {
+  font-weight: 200;
+  display: inline-block;
+  border-bottom: 1px solid #e5e5e5;
+  span {
+    color: darken(#e5e5e5, 20%);
+  }
+}
+
+/* Custom footer */
+footer {
+  margin-top: 10px;
+  padding-top: 9px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Custom headers */
+h1, h2, h3 {
+  margin: 0 0 10px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 1100px;
+  }
+
+  /* Remove the padding we set earlier */
+  header,
+  footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* REMOVES Mobile-only bottom margin on search input field for button separation */
+  #s {
+    margin-bottom: 0 !important;
+  }
+
+  /* Showing aside on all but mobile views */
+  .no-mobile {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Tag & category headers */
+  aside {
+    .text-muted {
+      font-weight: 200;
+      font-size: 22px;
+      border-bottom: 1px solid #e5e5e5;
+      display: inline-block;
+    }
+  }
+
+  div[class*='row-'] {
+    padding-top: 30px;
+    margin-bottom: 20px;
+    border-top: 1px solid #e5e5e5;
+    &:last-child {
+      margin-bottom: 0 !important;
+    }
+  }
+
+  .row-0 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    border-top: none !important;
+  }
+
+  /* Two column layout for paragraphs */
+  .two-col {
+    column-count: 2;
+    column-gap: 20px;
+    column-rule-color: #e5e5e5;
+    column-rule-style: solid;
+    column-rule-width: 1px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    -webkit-column-rule-color: #e5e5e5;
+    -webkit-column-rule-style: solid;
+    -webkit-column-rule-width: 1px;
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -moz-column-rule-color: #e5e5e5;
+    -moz-column-rule-style: solid;
+    -moz-column-rule-width: 1px;
+    text-align: justify;
+  }
+}
